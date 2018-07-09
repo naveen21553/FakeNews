@@ -5,10 +5,72 @@
     xmlns:local="using:FakeNews"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:data="using:FakeNews.Models"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+    <Page.Resources>
+        <DataTemplate x:Key="FinancialTemplate" x:DataType="data:FinanceData">
+            <local:FinancialTemplate/>
+        </DataTemplate>
+        <DataTemplate x:Key="FoodTemplate" x:DataType="data:FoodData">
+            <local:FoodTemplate/>
+        </DataTemplate>
+    </Page.Resources>
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <RelativePanel>
+            <Button Name="HamburgerButton" Width="50" RelativePanel.AlignLeftWithPanel="True" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" FontSize="22" RelativePanel.AlignVerticalCenterWithPanel="True" Click="HamburgerButton_Click"/>
+            <TextBlock Name="TitleTextBlock" Text="Finance" RelativePanel.RightOf="HamburgerButton" RelativePanel.AlignVerticalCenterWithPanel="True" FontSize="18" FontWeight="Bold" Margin="10,0,0,0"/>
+            <AutoSuggestBox Name="MyAutoSuggestBox" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignRightWithPanel="True" Margin="0,0,10,0" Width="200" PlaceholderText="Search" QueryIcon="Find"/>
+        </RelativePanel>
 
+        <SplitView Name="MySplitView" PaneBackground="Black" Grid.Row="1" IsPaneOpen="False" OpenPaneLength="200" CompactPaneLength="50" DisplayMode="CompactOverlay">
+            <SplitView.Pane>
+                <ListBox SelectionChanged="ListBox_SelectionChanged">
+                    <ListBoxItem Name="FinanceListBoxItem">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Margin="0,5,5,5" FontFamily="Segoe MDL2 Assets" FontSize="22" Text="&#xE825;"/>
+                            <TextBlock Text="Finanace" Margin="10,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListBoxItem>
+        
+                    <ListBoxItem Name="FoodListBoxItem">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Margin="0,5,5,5" FontFamily="Segoe MDL2 Assets" FontSize="22" Text="&#xED56;"/>
+                            <TextBlock Text="Food" Margin="10,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListBoxItem>
+                </ListBox>
+            </SplitView.Pane>
+            
+            <SplitView.Content>
+                <GridView Background="LightSlateGray" Name="MyGridView" ItemsSource="{x:Bind Financial}" ItemTemplate="{StaticResource FinancialTemplate}"/>
+            </SplitView.Content>
+        </SplitView>
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MyAutoSuggestBox.Visibility" Value="Collapsed"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="600"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MyAutoSuggestBox.Visibility" Value="Visible"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
     </Grid>
 </Page>

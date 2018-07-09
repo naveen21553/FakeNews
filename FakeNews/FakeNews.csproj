@@ -95,9 +95,17 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FinancialTemplate.xaml.cs">
+      <DependentUpon>FinancialTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FoodTemplate.xaml.cs">
+      <DependentUpon>FoodTemplate.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\FinanceData.cs" />
+    <Compile Include="Models\FoodData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -107,6 +115,16 @@
     <None Include="FakeNews_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Financial1.png" />
+    <Content Include="Assets\Financial2.png" />
+    <Content Include="Assets\Financial3.png" />
+    <Content Include="Assets\Financial4.png" />
+    <Content Include="Assets\Financial5.png" />
+    <Content Include="Assets\Food1.png" />
+    <Content Include="Assets\Food2.png" />
+    <Content Include="Assets\Food3.png" />
+    <Content Include="Assets\Food4.png" />
+    <Content Include="Assets\Food5.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -121,6 +139,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="FinancialTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FoodTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

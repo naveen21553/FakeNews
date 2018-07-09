@@ -1,0 +1,45 @@
+﻿<UserControl
+    x:Class="FakeNews.FoodTemplate"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FakeNews"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <RelativePanel Name="Panel" Background="White" Margin="20" Width="200" Height="275">
+        <Image Name="NewsImage" RelativePanel.AlignTopWithPanel="True" Source="{x:Bind FoodData.ImageSource}" Width="200"/>
+        <TextBlock Margin="10,10,10,0" Name="First" RelativePanel.Below="NewsImage" FontSize="18" Text="{x:Bind FoodData.FirstLine}" TextWrapping="Wrap"/>
+        <TextBlock Margin="10,2,10,0" RelativePanel.Below="First" Text="{x:Bind FoodData.SecondLine}" FontSize="14" TextWrapping="Wrap"/>
+        <TextBlock Margin="10,0,10,10" RelativePanel.AlignBottomWithPanel="True" Text="{x:Bind FoodData.ThirdLine}" FontSize="12" TextWrapping="Wrap"/>
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="900"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="Panel.Width" Value="400"/>
+                        <Setter Target="Panel.Height" Value="400"/>
+                        <Setter Target="NewsImage.Width" Value="400"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="Panel.Width" Value="200"/>
+                        <Setter Target="Panel.Height" Value="275"/>
+                        <Setter Target="NewsImage.Width" Value="200"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </RelativePanel>
+
+    
+</UserControl>
